@@ -1,0 +1,9 @@
+[package]
+name = "frenetic"
+version = "0.1.0"
+authors = ["Nathaniel McCallum <npmccallum@redhat.com>"]
+edition = "2018"
+license = "Apache-2.0"
+
+categories = ["no-std"]
+keywords = ["no_std"]
