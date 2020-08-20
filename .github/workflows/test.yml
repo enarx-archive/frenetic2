@@ -3,7 +3,7 @@ on: [push, pull_request]
 name: test
 jobs:
   test:
-    name: ${{ matrix.config.target }}
+    name: ${{ matrix.config.target }} (${{ matrix.profile.name }})
     runs-on: ${{ matrix.config.os }}-latest
     steps:
       - run: ${{ matrix.config.prep }}
@@ -16,10 +16,14 @@ jobs:
       - uses: actions-rs/cargo@v1
         with:
           command: test
-          args: --release --target=${{ matrix.config.target }}
+          args: ${{ matrix.profile.flag }} --target=${{ matrix.config.target }}
     strategy:
       fail-fast: false
       matrix:
+        profile:
+          - name: debug
+          - name: release
+            flag: --release
         config:
           - target: i586-pc-windows-msvc
             os: windows
