@@ -13,18 +13,18 @@
 
 mod arch;
 
-/// A basic CPU context
+/// A CPU context
 ///
-/// This structure holds the non-volatile registers in the platform's calling convention.
+/// This structure holds the non-volatile state in the platform's calling convention.
 #[derive(Default)]
 #[repr(transparent)]
-pub struct Basic(arch::Basic);
+pub struct Context(arch::Context);
 
-impl Basic {
+impl Context {
     /// Clear all basic volatile registers and CPU flags
     #[inline(always)]
     pub fn wipe() {
-        arch::Basic::wipe()
+        arch::Context::wipe()
     }
 
     /// Saves the non-volatile registers
@@ -53,33 +53,6 @@ impl Basic {
     /// must still be valid.
     #[inline(always)]
     pub unsafe fn load(&self) -> ! {
-        self.0.load()
-    }
-}
-
-/// An extended CPU context
-///
-/// This structure hold all extended, volatile CPU state.
-#[derive(Default)]
-#[repr(transparent)]
-pub struct Extended(arch::Extended);
-
-impl Extended {
-    /// Resets the extended CPU state to its default state
-    #[inline(always)]
-    pub fn wipe() {
-        arch::Extended::wipe()
-    }
-
-    /// Saves the current extended CPU state
-    #[inline(always)]
-    pub fn save(&mut self) {
-        self.0.save()
-    }
-
-    /// Loads the specified extended CPU state
-    #[inline(always)]
-    pub fn load(&self) {
         self.0.load()
     }
 }

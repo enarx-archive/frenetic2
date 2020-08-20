@@ -4,10 +4,10 @@
 mod sysv;
 
 #[cfg(not(target_os = "windows"))]
-pub use sysv::Basic;
+pub use sysv::Context;
 
 #[cfg(target_os = "windows")]
 mod win;
 
 #[cfg(target_os = "windows")]
-pub use win::Basic;
+pub use win::Context;

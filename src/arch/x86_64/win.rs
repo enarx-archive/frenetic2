@@ -2,9 +2,9 @@
 
 #[derive(Default)]
 #[repr(C, align(16))]
-pub struct Basic([usize; 10]);
+pub struct Context([usize; 10]);
 
-impl Basic {
+impl Context {
     #[naked]
     #[inline(never)]
     pub extern "C" fn wipe() {
