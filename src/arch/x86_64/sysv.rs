@@ -54,14 +54,14 @@ impl Context {
     pub unsafe extern "C" fn load(&self) -> ! {
         asm!(
             "mov     rax, 0",
-            "mov     r15, qword ptr [rdi + 0x00]",
-            "mov     r14, qword ptr [rdi + 0x08]",
-            "mov     r13, qword ptr [rdi + 0x10]",
-            "mov     r12, qword ptr [rdi + 0x18]",
-            "mov     rbx, qword ptr [rdi + 0x20]",
-            "mov     rbp, qword ptr [rdi + 0x28]",
-            "mov     rsp, qword ptr [rdi + 0x30]",
-            "jmp          qword ptr [rdi + 0x38]",
+            "mov     r15, [rdi + 0x00]",
+            "mov     r14, [rdi + 0x08]",
+            "mov     r13, [rdi + 0x10]",
+            "mov     r12, [rdi + 0x18]",
+            "mov     rbx, [rdi + 0x20]",
+            "mov     rbp, [rdi + 0x28]",
+            "mov     rsp, [rdi + 0x30]",
+            "jmp          [rdi + 0x38]",
             options(noreturn)
         )
     }
