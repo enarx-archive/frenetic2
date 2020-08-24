@@ -44,7 +44,6 @@ impl Context {
                 "mov    [rdi + 0x38], rsi",
                 "mov    rax, 1",
                 "jmp    rsi",
-                in("rdi") self,
                 options(noreturn)
             )
         }
@@ -63,7 +62,6 @@ impl Context {
             "mov     rbp, qword ptr [rdi + 0x28]",
             "mov     rsp, qword ptr [rdi + 0x30]",
             "jmp          qword ptr [rdi + 0x38]",
-            in("rdi") self,
             options(noreturn)
         )
     }

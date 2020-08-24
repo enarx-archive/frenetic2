@@ -44,8 +44,6 @@ impl Context {
                 "mov    [rdx + 0x48], rcx",
                 "mov    rax, 1",
                 "jmp    rcx",
-
-                in("rdx") self,
                 options(noreturn)
             )
         }
@@ -66,8 +64,6 @@ impl Context {
             "mov     rbp, qword ptr [rdx + 0x38]",
             "mov     rsp, qword ptr [rdx + 0x40]",
             "jmp          qword ptr [rdx + 0x48]",
-
-            in("rdx") self,
             options(noreturn)
         )
     }
